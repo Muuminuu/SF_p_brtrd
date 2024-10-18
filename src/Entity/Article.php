@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
-#[UniqueEntity(_fields: ['title'], message:'Le titre est déjà utilisé')]
+#[UniqueEntity(fields: ['title'], message:'Le titre est déjà utilisé')]
 #[ORM\HasLifecycleCallbacks]
 class Article
 {

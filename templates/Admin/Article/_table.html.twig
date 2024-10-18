@@ -1,0 +1,26 @@
+<table>
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Titre</td>
+            <td>Contenu</td>
+            <td>Créé le</td>
+            <td>Mis à jour le</td>
+            <td>Actions</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for article in articles %}
+            <tr>
+                <td>{{ article.id }}</td>
+                <td>{{ article.title }}</td>
+                <td>{{ article.content }}</td>
+                <td>{{ article.createdAt|date('d/m/Y') }}</td>
+                <td>{{ article.updatedAt|date('d/m/Y') }}</td>
+                <td>
+                    <a href="#">Modifier</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

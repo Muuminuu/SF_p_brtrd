@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Creation d'un article
+    {{ parent()}}
+{% endblock %}
+
+{% block body %}
+    <section class="container">
+        <h1>Creation d'un article</h1>
+        {% include "Admin/Article/_form.html.twig" with { buttonLabel: "Créer"} %}
+    </section>
+{% endblock %}

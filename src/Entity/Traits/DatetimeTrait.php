@@ -9,7 +9,7 @@ trait DatetimeTrait
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column(nullable:true)]
-    private ?\DateTimeInterface $updatedAt = null;
+    private ?\DateTimeImmutable $updatedAt = null;
 
     public function getCreatedAt(): ?\DateTimeImmutable
     {
@@ -33,12 +33,12 @@ trait DatetimeTrait
         return $this;
     }
 
-    public function getUpdatedAt(): ?\DateTimeInterface
+    public function getUpdatedAt(): ?\DateTimeImmutable
     {
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(\DateTimeInterface $updatedAt): static
+    public function setUpdatedAt(\DateTimeImmutable $updatedAt): static
     {
         $this->updatedAt = $updatedAt;
 
