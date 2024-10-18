@@ -1,0 +1,20 @@
+{% extends 'base.html.twig'%}
+
+{% block name %}
+    S'inscrire
+    {{ parent() }}
+{% endblock %}
+
+{% block metatags %}
+    <meta name="title" content="Inscription | My App"/>
+    <meta name="description" content="Bienvenue sur la page d'inscription"/>
+    <meta name="robots" content="index"/>
+{% endblock %}
+
+{% block body %}
+    <h1>S'inscrire</h1>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit">S'inscrire</button>
+    {{ form_end(form) }}
+{% endblock %}

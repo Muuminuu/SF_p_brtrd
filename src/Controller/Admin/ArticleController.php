@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 #[Route('/admin/article', name: 'admin.article')]
 class ArticleController extends AbstractController
@@ -76,5 +77,22 @@ class ArticleController extends AbstractController
         return $this->render('Admin/Article/update.html.twig', [
             'form' => $form,
         ]);
+    }
+
+    #[Route('/{id}/delete', name: '.delete', methods: ['POST'])]
+    public function delete(Article $article, Request $request): RedirectResponse
+    {
+        if ($this->isCsrfTokenValid(
+            'delete' . $article->getId(), 
+            $request->request->get('token'))) {
+            $this->em->remove($article);
+            $this->em->flush();
+
+            $this->addFlash('success', 'L\'article a bien été supprimé');
+        } else {
+            $this->addFlash('danger', 'L\'article n\'a pas pu être supprimé');
+        }
+
+        return $this->redirectToRoute('admin.article.index');
     }
 }

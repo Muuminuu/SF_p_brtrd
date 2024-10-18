@@ -18,7 +18,11 @@
                 <td>{{ article.createdAt|date('d/m/Y') }}</td>
                 <td>{{ article.updatedAt|date('d/m/Y') }}</td>
                 <td>
-                    <a href="#">Modifier</a>
+                    <a href="{{ path('admin.article.edit', { 'id': article.id }) }}">Modifier</a>
+                    <form action="{{ path('admin.article.delete', { 'id': article.id }) }}" method="POST" onsubmit="return confirm('Etes vous sûr de vouloir supprimer cet article ?')">
+                        <input type="hidden" name="token" value="{{ csrf_token('delete' ~ article.id) }}">
+                        <button type="submit">Supprimer</button>
+                    </form>
                 </td>
             </tr>
         {% endfor %}
